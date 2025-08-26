@@ -1,0 +1,5 @@
+Devnet
+
+cpi contract - 81rWXEvSuHhPVXf6TcJuZ8P6GH6eJw4VuhDm6Ha4bDeD
+
+double contract - 7gUZzYgQ8qKgKwuRvpof6py96tgrMFWTcwce6PE3SxUY
