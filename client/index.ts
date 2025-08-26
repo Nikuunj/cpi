@@ -31,10 +31,10 @@ const OnchainSchema: borsh.Schema = {
 };
 
 
-const connection = new Connection('https://solana-devnet.g.alchemy.com/v2/mxERBjRDJBMyKOE2DqXgILP1vx7iulPl');
+const connection = new Connection('https://api.testnet.solana.com');
 
-test("one transfer", async () => {
-    const contractPublicKey = new PublicKey(contractAddress);
+async function main() {
+    const contractPublicKey = new PublicKey('5kCVXWv8UKXjJWus7vwR9CvECW3kqWZgBRGQrnbAcfQa');
 	const payer = Keypair.fromSecretKey(secret_key);
 	console.log(payer.publicKey.toBase58());
 	
@@ -91,7 +91,7 @@ test("one transfer", async () => {
 		const tx2 = new Transaction().add(ix2);
 		tx2.recentBlockhash = blockhash;
 		tx2.feePayer = payer.publicKey
-		await sendAndConfirmTransaction(connection, tx2, [payer]);
+		await sendAndConfirmTransaction(connection, tx2, [payer, dataAcc]);
 		
 		const newDataAcc = await connection.getAccountInfo(dataAcc.publicKey);
 		console.log(newDataAcc);
@@ -101,8 +101,10 @@ test("one transfer", async () => {
 
 	await doublecount(); 
 	await doublecount(); 
-	// await doublecount(); 
-	// await doublecount(); 
+	await doublecount(); 
+	await doublecount(); 
 
 	
-});
+};
+
+main();
